@@ -1,37 +1,64 @@
-## Welcome to GitHub Pages
+# 版本变更说明
 
-You can use the [editor on GitHub](https://github.com/Freeman535/Freeman535.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+`此库只存放版本变更说明，不存放版本代码，代码请到对应分支查看`
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## ver 0.3.2
 
-### Markdown
+**更新日期**：`2025-04-18`
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+> 部分组件重构，优化用户体验
 
-```markdown
-Syntax highlighted code block
+- 修复印刷进度搜索印厂名为空时的报错
+- 修复偶发性操作导致数据库查询报错的问题
+- 修复查询时返回 code 为其他时 loading 不消失的问题
+- 优化纸张查询与导出时纸张按封面、夹册、内文排序
+- 优化报表 A04 应该按单号排序，并且重复单号合并显示
+- 更新默认季度为 2025 秋
 
-# Header 1
-## Header 2
-### Header 3
+## ver 0.0.5 ~ 0.3.1
 
-- Bulleted
-- List
+> 新增功能和优化
 
-1. Numbered
-2. List
+- 修复已知 bug 及开发中功能优化
 
-**Bold** and _Italic_ and `Code` text
+## ver 0.0.4
 
-[Link](url) and ![Image](src)
-```
+> 新增功能和优化
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- 取消付印单页面 check 按钮及 checkSuccess 提示
+- 登录页面添加 loading
+- 取消付印单列表页面的关联按钮
+- 优化付印单搜索界面表格宽度
+- 优化付印单 main 原材料界面宽度
+- paper 和 book 的搜索页面加 loading
+- 添加纸张库存操作记录
 
-### Jekyll Themes
+## ver 0.0.3
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Freeman535/Freeman535.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+> 付印单合印功能添加
 
-### Support or Contact
+- 临时添加合印功能
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## ver 0.0.2
+
+> 本次更新为旧版本 bug 更新，以及部分功能优化
+
+- 修复印厂状态修改后本地无变化
+- 优化 roundTo 函数
+- 优化图书搜索组件焦点
+- 新增纸张操作明细返回按钮
+- 新增纸张负库存搜索
+- 优化纸张库存页面
+- 优化付印单和调纸单名称不能重复
+- 新增付印单材料数量不够时提醒，减少不必要负出库
+- 新增付印单图书批次备注为空提醒
+- 优化付印单页面 ui
+- 新增付印单成品季别显示
+- 新增付印单 book 为材料时，提交减去对应的 bi 和 bc
+- 修复付印单提交不需 check 的 bug
+- 新增服务器定时 formart 表 A1
+- 修改登录页面遗留 admin 账号密码
+
+## ver 0.0.1
+
+初始化上传
