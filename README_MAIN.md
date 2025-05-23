@@ -34,7 +34,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/PanJiaChen/vue-element-admin.git
+git clone 项目地址
 
 # 进入项目目录
 cd vue-element-admin
