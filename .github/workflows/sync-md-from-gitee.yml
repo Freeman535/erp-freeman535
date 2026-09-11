@@ -1,7 +1,7 @@
 name: Sync MD from Gitee
 
 on:
-  # 定时同步：每天凌晨 2 点执行
+  # 定时同步：每天 UTC 4点和18点执行
   schedule:
     - cron: '0 4,18 * * *' 
   # 允许手动点击按钮触发
@@ -17,20 +17,25 @@ jobs:
           fetch-depth: 0 # 获取完整历史以便正确合并
 
       - name: Clone Gitee Repo & Copy MD Files
+        env:
+          # 将 Secret 注入到环境变量中，更安全
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
         run: |
-          # 克隆 Gitee 仓库到临时目录
-          # 如果是私有仓库，请使用 
-          https://${{ secrets.GITEE_TOKEN }}@gitee.com/user/repo.git
-          git clone --depth 1 https://gitee.com/freeman535/vue-element-admin.git /tmp/gitee-repo
+          # 1. 克隆 Gitee 仓库到临时目录
+          # 注意：如果 freeman535/vue-element-admin 是公开仓库，用下面这句即可：
+          # git clone --depth 1 https://gitee.com/freeman535/vue-element-admin.git /tmp/gitee-repo
           
-          # 创建目标目录（按需修改）
+          # 如果该仓库是私有的，请注释掉上面那句，改用下面这句（带 Token）：
+          git clone --depth 1 "https://${GITEE_TOKEN}@gitee.com/freeman535/vue-element-admin.git" /tmp/gitee-repo
+          
+          # 2. 创建目标目录（按需修改）
           mkdir -p ./docs/from-gitee
           
-          # 查找所有 .md 文件并复制到 GitHub 仓库指定目录
-          # 注意：这会覆盖同名文件，请确保路径规划合理
+          # 3. 查找所有 .md 文件并复制到 GitHub 仓库指定目录
+          # 注意：这会保留 Gitee 中的原始目录结构
           find /tmp/gitee-repo -name "*.md" -exec cp --parents {} ./docs/from-gitee/ \;
           
-          # 清理临时克隆目录
+          # 4. 清理临时克隆目录
           rm -rf /tmp/gitee-repo
 
       - name: Commit & Push Changes
