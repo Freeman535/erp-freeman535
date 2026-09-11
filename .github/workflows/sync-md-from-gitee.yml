@@ -29,7 +29,7 @@ jobs:
           echo "✅ Token loaded successfully, starting clone..."
           
           # 克隆私有仓库
-          git clone \  "https://freeman535:${GITEE_TOKEN}@gitee.com/freeman535/vue-element-admin.git" \  /tmp/gitee-repo
+          git clone --depth 1 "https://freeman535:${GITEE_TOKEN}@gitee.com/freeman535/vue-element-admin.git" /tmp/gitee-repo
           # git clone --depth 1 "https://${GITEE_TOKEN}@gitee.com/freeman535/vue-element-admin.git" /tmp/gitee-repo
           
           # 创建目标目录并复制文件（已修复路径嵌套问题）
