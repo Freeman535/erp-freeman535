@@ -1,0 +1,48 @@
+name: Sync MD from Gitee
+
+on:
+  # 定时同步：每天凌晨 2 点执行
+  schedule:
+    - cron: '0 4,18 * * *' 
+  # 允许手动点击按钮触发
+  workflow_dispatch: 
+
+jobs:
+  sync-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitHub Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 获取完整历史以便正确合并
+
+      - name: Clone Gitee Repo & Copy MD Files
+        run: |
+          # 克隆 Gitee 仓库到临时目录
+          # 如果是私有仓库，请使用 
+          https://${{ secrets.GITEE_TOKEN }}@gitee.com/user/repo.git
+          git clone --depth 1 https://gitee.com/freeman535/vue-element-admin.git /tmp/gitee-repo
+          
+          # 创建目标目录（按需修改）
+          mkdir -p ./docs/from-gitee
+          
+          # 查找所有 .md 文件并复制到 GitHub 仓库指定目录
+          # 注意：这会覆盖同名文件，请确保路径规划合理
+          find /tmp/gitee-repo -name "*.md" -exec cp --parents {} ./docs/from-gitee/ \;
+          
+          # 清理临时克隆目录
+          rm -rf /tmp/gitee-repo
+
+      - name: Commit & Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 检查是否有变更
+          if [[ -n $(git status -s) ]]; then
+            git add .
+            git commit -m "chore: sync markdown files from Gitee [skip ci]"
+            git push
+          else
+            echo "No changes detected, skipping commit."
+          fi
