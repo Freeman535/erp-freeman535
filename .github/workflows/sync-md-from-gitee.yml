@@ -33,9 +33,8 @@ jobs:
           # git clone --depth 1 "https://${GITEE_TOKEN}@gitee.com/freeman535/vue-element-admin.git" /tmp/gitee-repo
           
           # 创建目标目录并复制文件（已修复路径嵌套问题）
-          mkdir -p ./docs/from-gitee
           cd /tmp/gitee-repo
-          find . -name "*.md" -exec cp --parents {} "${GITHUB_WORKSPACE}/docs/from-gitee/" \;
+          find . -name "*.md" -exec cp --parents {} "${GITHUB_WORKSPACE}/" \;
           cd "${GITHUB_WORKSPACE}"
           
           # 清理临时目录
