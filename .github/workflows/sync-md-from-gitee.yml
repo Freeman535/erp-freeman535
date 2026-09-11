@@ -53,3 +53,6 @@ jobs:
           else
             echo "No changes detected, skipping commit."
           fi
+      - name: Set Project Homepage
+        run: |
+          cp versionControlHistory.md README.md
