@@ -1,10 +1,11 @@
 # 版本变更说明
 
-`此库只存放版本变更说明，不存放版本代码，代码请到对应分支查看`
+> <!TIP> 本说明文档用于记录版本变更内容，方便用户了解每次更新的具体改动。
+> <!NOTE> 对应版本号的后端代码版本号与前端代码版本号保持一致。
 
 ## ver 0.5.5
 
-**更新日期**:`2026-09-XX`
+**更新日期**:`2026-09-27`
 
 ### 新增功能
 
@@ -45,6 +46,33 @@
 ### 功能优化
 
 - 优化了样书管理页面添加图书时，每次添加样书都清空列表的问题，并对自动过滤掉重复的图书。
+
+- 印刷进度 Excel 导出时，隐藏标包列。
+
+- `A04` 界面夹册印张采用分印张形式表达。
+
+- 优化付印单 MD5 计算逻辑，把版权印厂也算进去了。
+
+- 印厂管理页面新增版权印厂更新字段。
+
+- 付印单界面取消 `consoleData` 接口。
+
+- `A03-2` 报表中新增下厂筛选。
+
+### 数据库结构调整
+
+- 表`format-fyd`新增字段：
+
+  - ALTER TABLE `format-fyd` ADD `yz_jc_main` VARCHAR(64) NOT NULL DEFAULT '' COMMENT '夹册印张明细' AFTER `jc_loss_price`;
+
+- 表`pflist`新增字段：
+
+  - ALTER TABLE `pflist` ADD `copyrightName` VARCHAR(256) NOT NULL DEFAULT '无' COMMENT '版权页印厂' AFTER `secondName`;
+
+- 表`fyd-list`修改字段：
+
+  - ALTER TABLE `fyd-list` ADD `copyrightName` VARCHAR(256) NOT NULL DEFAULT '无' COMMENT '版权印厂' AFTER `Md5Code`;
+  - ALTER TABLE `fyd-list` CHANGE `xc_date` `xc_date` DATE NULL;
 
 ## ver 0.5.4
 
