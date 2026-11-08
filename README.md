@@ -1,7 +1,24 @@
 # 版本变更说明
 
-> <!TIP> 本说明文档用于记录版本变更内容，方便用户了解每次更新的具体改动。
-> <!NOTE> 对应版本号的后端代码版本号与前端代码版本号保持一致。
+> \<!TIP\> 本说明文档用于记录版本变更内容，方便用户了解每次更新的具体改动。 \<!NOTE\> 对应版本号的后端代码版本号与前端代码版本号保持一致。
+
+## ver 0.5.7
+
+**更新日期**：`2026-XX-XX`
+
+### 1. 新增数据库字段
+
+#### 1.1 规则数据库新增
+
+```
+INSERT INTO `routes` (`id`, `path`, `component`, `redirect`, `name`, `alwaysShow`, `hidden`, `children`, `meta`) VALUES (NULL, '/cs', 'layout', 'noRedirect', '', '0', '0', '[{\"meta\": {\"title\": \"客户信息资料\"}, \"name\": \"客户信息资料\", \"path\": \"CustomerInformation\", \"children\": [{\"name\": \"新增客户资料\", \"path\": \"test1\", \"hidden\": true, \"component\": \"cs_add_customer\"}], \"component\": \"CustomerInformation\"}, {\"meta\": {\"title\": \"报数订单\"}, \"name\": \"报数订单\", \"path\": \"ReportedOrder\", \"children\": [{\"name\": \"新增报数订单\", \"path\": \"test1\", \"hidden\": true, \"component\": \"cs_add_RO\"}], \"component\": \"ReportedOrder\"}]', '{\"icon\": \"tree\", \"title\": \"客服模块\"}');
+```
+
+### 2. 新增功能
+
+#### 2.1 查询和新增客户信息
+
+新增客户需要特俗权限，查询无特殊权限
 
 ## ver 0.5.6
 
@@ -361,7 +378,7 @@ _此页面用于查询购纸明细，方便用户了解购纸情况。_
 - 优化报表 A04 应该按单号排序，并且重复单号合并显示
 - 更新默认季度为 2025 秋
 
-## ver 0.0.5 ~ 0.3.1
+## ver 0.0.5 \~ 0.3.1
 
 > 新增功能和优化
 
