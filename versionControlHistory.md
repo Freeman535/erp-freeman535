@@ -14,11 +14,30 @@
 INSERT INTO `routes` (`id`, `path`, `component`, `redirect`, `name`, `alwaysShow`, `hidden`, `children`, `meta`) VALUES (NULL, '/cs', 'layout', 'noRedirect', '', '0', '0', '[{\"meta\": {\"title\": \"客户信息资料\"}, \"name\": \"客户信息资料\", \"path\": \"CustomerInformation\", \"children\": [{\"name\": \"新增客户资料\", \"path\": \"test1\", \"hidden\": true, \"component\": \"cs_add_customer\"}], \"component\": \"CustomerInformation\"}, {\"meta\": {\"title\": \"报数订单\"}, \"name\": \"报数订单\", \"path\": \"ReportedOrder\", \"children\": [{\"name\": \"新增报数订单\", \"path\": \"test1\", \"hidden\": true, \"component\": \"cs_add_RO\"}], \"component\": \"ReportedOrder\"}]', '{\"icon\": \"tree\", \"title\": \"客服模块\"}');
 ```
 
+```
+    {
+        "meta": {
+            "title": "设计审批流"
+        },
+        "name": "设计审批流",
+        "path": "EditWorkflow",
+        "component": "EditWorkflow"
+    }
+```
+
 ### 2. 新增功能
 
 #### 2.1 查询和新增客户信息
 
 新增客户需要特俗权限，查询无特殊权限
+
+#### 2.2 新增设计审批流功能
+
+为了方便后续功能对接审批流，新增设计审批流功能。
+
+### 3. 功能优化
+
+- 新增优化了印厂工价中`内文最低加放`字段，用以控制内文最低加放值。
 
 ## ver 0.5.6
 
