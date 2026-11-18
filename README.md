@@ -42,6 +42,7 @@ INSERT INTO `routes` (`id`, `path`, `component`, `redirect`, `name`, `alwaysShow
 ### 3. 功能优化
 
 - 新增优化了印厂工价中`内文最低加放`字段，用以控制内文最低加放值。
+- `A03-2` 报表新增`版权印厂`信息字段和 Excel 导出。
 
 ## ver 0.5.6
 
