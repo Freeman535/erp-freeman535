@@ -39,6 +39,10 @@ INSERT INTO `routes` (`id`, `path`, `component`, `redirect`, `name`, `alwaysShow
 
 报数订单功能，接入审批流和客户信息。
 
+#### 2.4 新增 websocket 功能
+
+实时推送订单状态变化，订单状态变更后，前端会收到消息并更新页面。
+
 ### 3. 功能优化
 
 - 新增优化了印厂工价中`内文最低加放`字段，用以控制内文最低加放值。
